@@ -1,12 +1,13 @@
 let userScore = 0;
 let computerScore = 0;
+let round = 0
 
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
 
-while (true) {
-    let userChoice = prompt("Enter 0 for Rock, 1 for Scissors, 2 for Paper (or Cancel to quit)");
+while (round < 5) {
+    let userChoice = prompt("Enter 0 for Rock, 1 for Scissors, 2 for Paper (5 ROUNDS) (or Cancel to quit)");
     
     // Exit if user cancels
     if (userChoice === null) {
@@ -27,6 +28,7 @@ while (true) {
     // Tie
     if(userChoice === computerChoice){
         console.log("It's a tie! No points awarded.");
+        round++
     }
 
     // Rock (0)
@@ -34,12 +36,14 @@ while (true) {
         console.log(`YOU WIN!
 Computer got Scissors, and Rock beats Scissors`);
         userScore++;
+        round++
     } 
 
     if(userChoice === 0 && computerChoice === 2) {
         console.log(`YOU LOSE!
 Computer got Paper, and Paper beats Rock`);
         computerScore++;
+        round++
     }
 
     // Scissors (1)
@@ -47,12 +51,14 @@ Computer got Paper, and Paper beats Rock`);
         console.log(`YOU LOSE!
 Computer got Rock, and Rock beats Scissors`);
         computerScore++;
+        round++
     }
 
     if(userChoice === 1 && computerChoice === 2){
         console.log(`YOU WIN!
 Computer got Paper, and Scissors beats Paper`);
         userScore++;
+        round++
     }
 
     // Paper (2)
@@ -60,12 +66,14 @@ Computer got Paper, and Scissors beats Paper`);
         console.log(`YOU WIN!
 Computer got Rock, and Paper beats Rock`);
         userScore++;
+        round++
     }
 
     if(userChoice === 2 && computerChoice === 1){
         console.log(`YOU LOSE!
 Computer got Scissors, and Scissors beats Paper`);
         computerScore++;
+        round++
     }
 
     // Display current score
